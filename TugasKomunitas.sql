@@ -69,4 +69,21 @@ set total_transaksi = jumlah_produk*harga_produk;
 select * from tbTransaksi order by harga_produk asc;
 select nama_sales, total_transaksi from tbTransaksi order by total_transaksi asc;
 
-select * from tbTransaksi
+update tbTransaksi
+set nama_produk = 'Brio'
+where id_produk = 'S001';
+
+delete from tbTransaksi
+where id_transaksi = 'TR008';
+
+alter table tbTransaksi
+add column jumlah_total_transaksi int;
+
+update tbTransaksi
+set jumlah_total_transaksi = sum(total_transaksi);
+
+select nama_Sales, sum(total_transaksi) as jumlah_total_transaksi
+from tbTransaksi
+group by nama_sales order by jumlah_total_Transaksi asc;
+
+select * from tbTransaksi;
